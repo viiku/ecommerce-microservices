@@ -1,6 +1,6 @@
-package com.vikku.orderservice.core.events;
+package com.vikku.OrderService.core.events;
 
-import com.vikku.orderservice.command.OrderStatus;
+import com.vikku.OrderService.command.OrderStatus;
 import lombok.Data;
 
 @Data

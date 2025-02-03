@@ -1,6 +1,6 @@
-package com.vikku.orderservice.command;
+package com.vikku.OrderService.command;
 
-import com.vikku.orderservice.core.events.OrderCreatedEvent;
+import com.vikku.OrderService.core.events.OrderCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;

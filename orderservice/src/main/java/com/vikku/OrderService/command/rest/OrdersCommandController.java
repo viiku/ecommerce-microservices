@@ -1,7 +1,7 @@
-package com.vikku.orderservice.command.rest;
+package com.vikku.OrderService.command.rest;
 
-import com.vikku.orderservice.command.CreateOrderCommand;
-import com.vikku.orderservice.command.OrderStatus;
+import com.vikku.OrderService.command.CreateOrderCommand;
+import com.vikku.OrderService.command.OrderStatus;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

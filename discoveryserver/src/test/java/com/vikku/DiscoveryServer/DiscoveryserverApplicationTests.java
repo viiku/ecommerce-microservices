@@ -1,4 +1,4 @@
-package com.vikku.discoveryserver;
+package com.vikku.DiscoveryServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

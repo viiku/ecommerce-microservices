@@ -1,4 +1,4 @@
-package com.vikku.orderservice.command;
+package com.vikku.OrderService.command;
 
 public enum OrderStatus {
     CREATED,

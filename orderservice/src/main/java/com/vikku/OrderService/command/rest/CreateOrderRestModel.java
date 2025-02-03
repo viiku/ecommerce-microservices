@@ -1,4 +1,4 @@
-package com.vikku.orderservice.command.rest;
+package com.vikku.OrderService.command.rest;
 
 import lombok.Data;
 

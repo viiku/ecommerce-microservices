@@ -1,4 +1,4 @@
-package com.vikku.orderservice;
+package com.vikku.OrderService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
