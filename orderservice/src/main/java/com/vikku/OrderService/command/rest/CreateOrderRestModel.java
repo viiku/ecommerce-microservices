@@ -1,8 +1,5 @@
 package com.vikku.OrderService.command.rest;
 
-import lombok.Data;
-
-@Data
 public class CreateOrderRestModel {
 
     private String productId;
