@@ -12,6 +12,7 @@ import java.io.Serializable;
 
 @Table(name="orders")
 @Entity
+@Data
 public class OrderEntity implements Serializable {
 
     private static final long serialVersionUID = -222223838282828L;
