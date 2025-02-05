@@ -26,8 +26,16 @@ public class OrderAggregate {
     @CommandHandler
     public OrderAggregate(CreateOrderCommand createOrderCommand) {
 //        Basic Validation
+        if(createOrderCommand.getProductId() == null || createOrderCommand.getProductId().isBlank()) {
+            throw new IllegalArgumentException("Product ID can not be empty.");
+        }
+
+        if (createOrderCommand.getAddressId() == null || createOrderCommand.getAddressId().isBlank()) {
+            throw new IllegalArgumentException("Address Id can not be empty.");
+        }
+
         if (createOrderCommand.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity can not be less than zero.");
+            throw new IllegalArgumentException("Quantity can not be less than one.");
         }
 
         OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent();
