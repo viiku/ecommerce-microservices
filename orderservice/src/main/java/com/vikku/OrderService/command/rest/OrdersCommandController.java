@@ -4,6 +4,7 @@ import com.vikku.OrderService.command.CreateOrderCommand;
 import com.vikku.OrderService.command.OrderStatus;
 import jakarta.validation.Valid;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +20,17 @@ public class OrdersCommandController {
     private final Environment environment;
     private final CommandGateway commandGateway;
 
+    @Autowired
     public OrdersCommandController(Environment environment, CommandGateway commandGateway) {
         this.environment = environment;
         this.commandGateway = commandGateway;
     }
+
     @PostMapping
-    public String getOrders(@Valid @RequestBody CreateOrderRestModel createOrderRestModel) {
+    public String createOrders(@Valid @RequestBody CreateOrderRestModel createOrderRestModel) {
         CreateOrderCommand createOrderCommand = new CreateOrderCommand(
                 UUID.randomUUID().toString(),
-                "27b95829-4f3f-4ddf8983-151ba010e35b",
+                "27b95829-4f3f-4ddf8983-151ba010e35b", // hardcoded for now
                 createOrderRestModel.getProductId(),
                 createOrderRestModel.getQuantity(),
                 createOrderRestModel.getAddressId(),
@@ -36,6 +39,8 @@ public class OrdersCommandController {
 
         String returnValue;
         try {
+//            Sending to command Gateway, command gateway is basically a higher level abstraction
+//            built on top of commandBus, provides convenient interface for sending commands
             returnValue = commandGateway.sendAndWait(createOrderCommand);
         } catch (Exception e) {
             returnValue = e.getLocalizedMessage();

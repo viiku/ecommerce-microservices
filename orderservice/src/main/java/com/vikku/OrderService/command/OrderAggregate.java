@@ -13,20 +13,22 @@ public class OrderAggregate {
 
     @AggregateIdentifier
     public String orderId;
+
     private String userId;
     private String productId;
     private int quantity;
     private String addressId;
     private OrderStatus orderStatus;
 
-    public OrderAggregate() {
-
-    }
+    public OrderAggregate() {}
 
 //    Handler for creating order
     @CommandHandler
     public OrderAggregate(CreateOrderCommand createOrderCommand) {
 //        Basic Validation
+        if (createOrderCommand.getQuantity() <= 0) {
+            throw new IllegalArgumentException("Quantity can not be less than zero.");
+        }
 
         OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent();
         BeanUtils.copyProperties(createOrderCommand, orderCreatedEvent);
