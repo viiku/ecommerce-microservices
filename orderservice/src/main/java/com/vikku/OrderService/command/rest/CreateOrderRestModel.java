@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class CreateOrderRestModel {
 
-//    @NotBlank(message = "Product ID is a required field")
+    @NotBlank(message = "Product ID is a required field")
     private String productId;
 
     @Min(value = 1, message = "Quantity can not be lower than 1")
