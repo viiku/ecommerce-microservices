@@ -21,11 +21,13 @@ public class OrderEventsHandler {
     }
 
     @ExceptionHandler(resultType=Exception.class)
-    public void handle(Exception exception) {
+    public void handle(Exception exception) throws Exception {
 //        Log error message
 //        Log error message about rolling back transaction
+        throw exception;
     }
 
+//    Handling IllegalArgumentException
     @ExceptionHandler(resultType=IllegalArgumentException.class)
     public void handle(IllegalArgumentException exception) {
 //        Log error message
@@ -33,11 +35,20 @@ public class OrderEventsHandler {
     }
 
     @EventHandler
-    public void on(OrderCreatedEvent event) {
+    public void on(OrderCreatedEvent event) throws Exception {
 
         OrderEntity orderEntity = new OrderEntity();
         BeanUtils.copyProperties(event, orderEntity);
 
-        ordersRepository.save(orderEntity);
+//        this save method can cause some exception
+//        we can use try and catch and handle exception
+//        if there are multiple methods then we can apply more try and catch method
+        try {
+            ordersRepository.save(orderEntity);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        if(true) throw new Exception("Forcing exception in Event Handler Class");
     }
 }

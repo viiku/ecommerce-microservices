@@ -24,7 +24,7 @@ public class OrderAggregate {
 
 //    Handler for creating order
     @CommandHandler
-    public OrderAggregate(CreateOrderCommand createOrderCommand) throws Exception {
+    public OrderAggregate(CreateOrderCommand createOrderCommand) {
 //        Basic Validation
         if(createOrderCommand.getProductId() == null || createOrderCommand.getProductId().isBlank()) {
             throw new IllegalArgumentException("Product ID can not be empty.");
@@ -44,7 +44,7 @@ public class OrderAggregate {
 //        Emitting event using aggregate lifecycle
         AggregateLifecycle.apply(orderCreatedEvent);
 
-        if(true) throw new Exception("An error took place in the CreateOrderCommand @CommandHandler method");
+//        if(true) throw new Exception("An error took place in the CreateOrderCommand @CommandHandler method");
     }
 
     @EventSourcingHandler
