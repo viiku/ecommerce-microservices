@@ -1,0 +1,5 @@
+Task 7:- Implement Lookup DB table for record validation
+Task 8:- Implement central error handler class
+Task 9:- Custom error message in JSON format, execution should stop when there is an exception in
+aggregate class
+Task 10:- Handling events on event side
