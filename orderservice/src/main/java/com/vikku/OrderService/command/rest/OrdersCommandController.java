@@ -38,13 +38,14 @@ public class OrdersCommandController {
         );
 
         String returnValue;
-        try {
-//            Sending to command Gateway, command gateway is basically a higher level abstraction
-//            built on top of commandBus, provides convenient interface for sending commands
-            returnValue = commandGateway.sendAndWait(createOrderCommand);
-        } catch (Exception e) {
-            returnValue = e.getLocalizedMessage();
-        }
+        returnValue = commandGateway.sendAndWait(createOrderCommand);
+//        try {
+////            Sending to command Gateway, command gateway is basically a higher level abstraction
+////            built on top of commandBus, provides convenient interface for sending commands
+//            returnValue = commandGateway.sendAndWait(createOrderCommand);
+//        } catch (Exception e) {
+//            returnValue = e.getLocalizedMessage();
+//        }
 
         return returnValue;
     }
