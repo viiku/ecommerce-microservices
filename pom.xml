@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-<!--        <module>apigateway</module>-->
-<!--        <module>discoveryserver</module>-->
         <module>orderservice</module>
+        <module>apigateway</module>
+        <module>discoveryserver</module>
     </modules>
 
     <dependencyManagement>
