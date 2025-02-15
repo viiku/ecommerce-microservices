@@ -13,6 +13,7 @@
         <module>orderservice</module>
         <module>apigateway</module>
         <module>discoveryserver</module>
+        <module>productservice</module>
     </modules>
 
     <dependencyManagement>
