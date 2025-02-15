@@ -12,6 +12,7 @@ import java.util.UUID;
 @RequestMapping("/products")
 public class ProductsCommandController {
 
+
     @PostMapping
     public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
         CreateProductCommand createProductCommand = new CreateProductCommand(
