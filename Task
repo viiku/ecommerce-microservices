@@ -12,3 +12,5 @@ Task 11:- Implement Rollback if any exception logs
 Task 12:- Creating order Saga class
 Task 13:- Include a new microservice called product microservice
 Task 14:- createProductEvent should emit events to ProductAggregate class
+Task 15:- Handling Events in query events handler to maintain consistency in Read database
+Task 16:- Implement query controller class and model for handling queries
