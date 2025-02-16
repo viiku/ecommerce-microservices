@@ -35,8 +35,13 @@ public class ProductsCommandController {
         );
 
         String returnValue;
-        returnValue = commandGateway.sendAndWait(createProductCommand);
+//        returnValue = commandGateway.sendAndWait(createProductCommand);
 
+        try {
+            returnValue = commandGateway.sendAndWait(createProductCommand);
+        } catch (Exception e) {
+            returnValue = e.getLocalizedMessage();
+        }
         return returnValue;
     }
 }
