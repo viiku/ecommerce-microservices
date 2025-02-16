@@ -1,4 +1,4 @@
-package com.vikku.ProductService.command.core.events;
+package com.vikku.ProductService.core.events;
 
 import lombok.Data;
 
