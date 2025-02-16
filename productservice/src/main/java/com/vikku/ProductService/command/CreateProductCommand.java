@@ -1,26 +1,28 @@
 package com.vikku.ProductService.command;
 
 import lombok.Data;
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.math.BigDecimal;
 
 @Data
 public class CreateProductCommand {
 
-    private final String UUID;
+    @TargetAggregateIdentifier
+    private final String productId;
     private final String title;
     private final BigDecimal price;
     private final Integer quantity;
 
-    public CreateProductCommand(String UUID, String title, BigDecimal price, Integer quantity) {
-        this.UUID = UUID;
+    public CreateProductCommand(String productId, String title, BigDecimal price, Integer quantity) {
+        this.productId = productId;
         this.title = title;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getUUID() {
-        return UUID;
+    public String getProductId() {
+        return productId;
     }
 
     public String getTitle() {
@@ -34,4 +36,5 @@ public class CreateProductCommand {
     public Integer getQuantity() {
         return quantity;
     }
+
 }

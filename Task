@@ -1,4 +1,8 @@
-Task 6:- Configuring Eureka server for microservice
+Task 1:- Implement a simple spring boot project which receives various HTTP methods
+Task 2:- Adding multiple dependencies
+Task 4:- Configuring API Gateway
+Task 5:- Configuring Eureka server for microservice
+Task 6:- Configuring Axon server for product microservice
 Task 7:- Implement Lookup DB table for record validation
 Task 8:- Implement central error handler class
 Task 9:- Custom error message in JSON format, execution should stop when there is an exception in
@@ -6,3 +10,5 @@ aggregate class
 Task 10:- Handling events on event side
 Task 11:- Implement Rollback if any exception logs
 Task 12:- Creating order Saga class
+Task 13:- Include a new microservice called product microservice
+Task 14:- createProductEvent should emit events to ProductAggregate class
