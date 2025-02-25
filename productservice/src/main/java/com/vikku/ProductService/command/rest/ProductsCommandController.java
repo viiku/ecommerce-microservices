@@ -2,6 +2,7 @@ package com.vikku.ProductService.command.rest;
 
 import com.vikku.ProductService.command.CreateProductCommand;
 import io.grpc.netty.shaded.io.netty.util.collection.CharObjectHashMap;
+import jakarta.validation.Valid;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -26,7 +27,7 @@ public class ProductsCommandController {
     }
 
     @PostMapping
-    public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
+    public String createProduct(@Valid @RequestBody CreateProductRestModel createProductRestModel) {
         CreateProductCommand createProductCommand = new CreateProductCommand(
                 UUID.randomUUID().toString(),
                 createProductRestModel.getTitle(),
