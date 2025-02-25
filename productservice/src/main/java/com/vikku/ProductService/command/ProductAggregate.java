@@ -24,17 +24,17 @@ public class ProductAggregate {
     @CommandHandler
     public ProductAggregate(CreateProductCommand createProductCommand) {
         //        Basic Validation
-        if(createProductCommand.getProductId() == null || createProductCommand.getProductId().isBlank()) {
-            throw new IllegalArgumentException("Product ID can not be empty.");
-        }
-
-        if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
-            throw new IllegalArgumentException("Address Id can not be empty.");
-        }
-
-        if (createProductCommand.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity can not be less than one.");
-        }
+//        if(createProductCommand.getProductId() == null || createProductCommand.getProductId().isBlank()) {
+//            throw new IllegalArgumentException("Product ID can not be empty.");
+//        }
+//
+//        if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
+//            throw new IllegalArgumentException("Address Id can not be empty.");
+//        }
+//
+//        if (createProductCommand.getQuantity() <= 0) {
+//            throw new IllegalArgumentException("Quantity can not be less than one.");
+//        }
 
         ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
