@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class CreateOrderRestModel {
 
+//    Validations from Bean validation API
     @NotBlank(message = "Product ID is a required field")
     private String productId;
 
