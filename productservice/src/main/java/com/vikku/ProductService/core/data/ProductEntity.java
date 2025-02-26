@@ -9,12 +9,12 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Data
 @Table(name = "products")
+@Data
 @Entity
 public class ProductEntity implements Serializable {
 
-    private static final long serialVersionUID = -222223838282828L;
+//    private static final long serialVersionUID = -222223838282828L;
 
     @Id
     @Column(unique = true)

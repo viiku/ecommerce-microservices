@@ -1,7 +1,7 @@
 package com.vikku.ProductService.query;
 
 import com.vikku.ProductService.core.data.ProductEntity;
-import com.vikku.ProductService.core.data.ProductRepository;
+import com.vikku.ProductService.core.data.ProductsRepository;
 import com.vikku.ProductService.query.rest.ProductRestModel;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
@@ -13,9 +13,9 @@ import java.util.List;
 @Component
 public class ProductsQueryHandler {
 
-    private final ProductRepository productRepository;
+    private final ProductsRepository productRepository;
 
-    ProductsQueryHandler(ProductRepository productRepository) {
+    ProductsQueryHandler(ProductsRepository productRepository) {
         this.productRepository = productRepository;
     }
 

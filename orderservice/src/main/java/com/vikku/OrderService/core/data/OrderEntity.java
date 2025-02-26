@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Data
 public class OrderEntity implements Serializable {
 
-    private static final long serialVersionUID = -222223838282828L;
+//    private static final long serialVersionUID = -222223838282828L;
 
     @Id
     @Column(unique = true)

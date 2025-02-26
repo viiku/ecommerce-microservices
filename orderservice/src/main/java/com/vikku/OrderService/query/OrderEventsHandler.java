@@ -35,10 +35,10 @@ public class OrderEventsHandler {
     }
 
     @EventHandler
-    public void on(OrderCreatedEvent event) throws Exception {
+    public void on(OrderCreatedEvent orderCreatedEvent) throws Exception {
 
         OrderEntity orderEntity = new OrderEntity();
-        BeanUtils.copyProperties(event, orderEntity);
+        BeanUtils.copyProperties(orderCreatedEvent, orderEntity);
 
 //        this save method can cause some exception
 //        we can use try and catch and handle exception

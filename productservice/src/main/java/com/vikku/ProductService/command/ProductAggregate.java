@@ -2,7 +2,7 @@ package com.vikku.ProductService.command;
 
 import com.vikku.ProductService.core.events.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
@@ -42,7 +42,7 @@ public class ProductAggregate {
         AggregateLifecycle.apply(productCreatedEvent);
     }
 
-    @EventHandler
+    @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent) {
         this.productId = productCreatedEvent.getProductId();
         this.title = productCreatedEvent.getTitle();
