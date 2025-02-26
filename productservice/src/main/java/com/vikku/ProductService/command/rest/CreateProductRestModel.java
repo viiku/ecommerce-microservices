@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 public class CreateProductRestModel {
 
-//    Validations using Bean validation
+//    Bean validation
     @NotBlank(message = "Product title is a required field")
     private String title;
 

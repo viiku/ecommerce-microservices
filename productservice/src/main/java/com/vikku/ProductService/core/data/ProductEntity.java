@@ -20,7 +20,7 @@ public class ProductEntity implements Serializable {
     @Column(unique = true)
     private String productId;
 
-    @Column(unique = true)
+//    @Column(unique = true)
     private String title;
     private BigDecimal price;
     private Integer quantity;
