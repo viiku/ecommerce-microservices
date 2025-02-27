@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 @Component
 public class CreateOrderCommandInterceptor implements MessageDispatchInterceptor<CommandMessage<?>> {
 
@@ -61,6 +62,7 @@ public class CreateOrderCommandInterceptor implements MessageDispatchInterceptor
                     );
                 }
             }
+
             return command;
         };
     }
