@@ -28,9 +28,9 @@ public class ProductAggregate {
             throw new IllegalArgumentException("Product price can not be less than zero.");
         }
 
-        if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
-            throw new IllegalArgumentException("Product title can not be empty.");
-        }
+//        if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
+//            throw new IllegalArgumentException("Product title can not be empty.");
+//        }
 
         if (createProductCommand.getQuantity() <= 0) {
             throw new IllegalArgumentException("Quantity can not be less than zero.");

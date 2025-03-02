@@ -1,11 +1,11 @@
 package com.vikku.ProductService.command;
 
+import com.vikku.ProductService.core.data.ProductLookupEntity;
+import com.vikku.ProductService.core.data.ProductLookupRepository;
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
@@ -13,18 +13,16 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.BiFunction;
 
-@Lazy
 @Component
-@DependsOn("commandBus")
 public class CreateProductCommandInterceptor implements MessageDispatchInterceptor<CommandMessage<?>> {
 
-//        private final OrderLookupRepository orderLookupRepository;
+    private final ProductLookupRepository productLookupRepository;
 
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(CreateProductCommandInterceptor.class);
 
-//    public CreateProductCommandInterceptor(OrderLookupRepository orderLookupRepository) {
-//        this.orderLookupRepository = orderLookupRepository;
-//    }
+    public CreateProductCommandInterceptor(ProductLookupRepository productLookupRepository) {
+        this.productLookupRepository = productLookupRepository;
+    }
 
     @Nonnull
     @Override
@@ -54,16 +52,16 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
                 }
 
 //                checking if the orderId or productId already exist in database
-//                OrderLookupEntity orderLookupEntity = orderLookupRepository.findByOrderIdOrProductId(createOrderCommand.getOrderId(),
-//                        createOrderCommand.getProductId());
-//
-//                if(orderLookupEntity != null) {
-//                    throw new IllegalStateException(
-//                            String.format("Order with orderId %s or productId %s already exist",
-//                                    createOrderCommand.getOrderId(), createOrderCommand.getProductId()
-//                            )
-//                    );
-//                }
+                ProductLookupEntity productLookupEntity = productLookupRepository.findByProductIdOrTitle(createProductCommand.getProductId(),
+                        createProductCommand.getTitle());
+
+                if(productLookupEntity != null) {
+                    throw new IllegalStateException(
+                            String.format("Product with productId %s already exist",
+                                    productLookupEntity.getProductId()
+                            )
+                    );
+                }
             }
 
             return command;
