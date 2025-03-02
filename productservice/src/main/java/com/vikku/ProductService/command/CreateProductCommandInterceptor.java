@@ -39,19 +39,20 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
 //                Since we're already doing Bean validation,
 //                we can actually remove this validation
 
-                if(createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
-                    throw new IllegalArgumentException("Price can not be less than zero.");
-                }
+//                if(createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+//                    throw new IllegalArgumentException("Price can not be less than zero.");
+//                }
+//
+//                if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
+//                    throw new IllegalArgumentException("Title can not be empty.");
+//                }
+//
+//                if (createProductCommand.getQuantity() <= 0) {
+//                    throw new IllegalArgumentException("Quantity can not be less than one.");
+//                }
 
-                if (createProductCommand.getTitle() == null || createProductCommand.getTitle().isBlank()) {
-                    throw new IllegalArgumentException("Title can not be empty.");
-                }
-
-                if (createProductCommand.getQuantity() <= 0) {
-                    throw new IllegalArgumentException("Quantity can not be less than one.");
-                }
-
-//                checking if the orderId or productId already exist in database
+//                checking if the productId already exist in database
+//                This message interceptor message should be trigger lookup events handler
                 ProductLookupEntity productLookupEntity = productLookupRepository.findByProductIdOrTitle(createProductCommand.getProductId(),
                         createProductCommand.getTitle());
 

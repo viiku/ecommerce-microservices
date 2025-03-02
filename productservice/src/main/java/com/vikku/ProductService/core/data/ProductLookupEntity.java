@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -18,6 +20,11 @@ public class ProductLookupEntity implements Serializable {
 
     @Column(unique = true)
     private String title;
+
+    public ProductLookupEntity(String productId, String title) {
+        this.productId = productId;
+        this.title = title;
+    }
 
     public String getProductId() {
         return productId;

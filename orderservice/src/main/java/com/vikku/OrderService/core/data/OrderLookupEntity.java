@@ -21,9 +21,9 @@ public class OrderLookupEntity implements Serializable {
     @Column(unique = true)
     private String orderId;
     private String productId;
-
-    @Repository
-    public static interface OrderLookupRepository extends JpaRepository<OrderLookupEntity, String> {
-        OrderLookupEntity findByOrderIdOrProductId(String orderId, String productId);
-    }
+//
+//    @Repository
+//    public static interface OrderLookupRepository extends JpaRepository<OrderLookupEntity, String> {
+//        OrderLookupEntity findByOrderIdOrProductId(String orderId, String productId);
+//    }
 }
