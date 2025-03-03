@@ -3,9 +3,12 @@ package com.vikku.ProductService.query;
 import com.vikku.ProductService.core.data.ProductEntity;
 import com.vikku.ProductService.core.data.ProductsRepository;
 import com.vikku.ProductService.core.events.ProductCreatedEvent;
+import com.vikku.core.command.events.ProductReservedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +17,8 @@ import org.springframework.stereotype.Component;
 public class ProductEventsHandler {
 
     private final ProductsRepository productsRepository;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductEventsHandler.class);
 
 //    constructor based dependency injection
     ProductEventsHandler(ProductsRepository productRepository) {
@@ -44,6 +49,16 @@ public class ProductEventsHandler {
             e.printStackTrace();
         }
 
-        if(true) throw new Exception("Force exception in event handler class");
+//        if(true) throw new Exception("Force exception in event handler class");
+    }
+
+    @EventHandler
+    public void on (ProductReservedEvent productReservedEvent) {
+        ProductEntity productEntity = productsRepository.findByProductId(productReservedEvent.getProductId());
+        productEntity.setQuantity(productEntity.getQuantity() - productReservedEvent.getQuantity());
+        productsRepository.save(productEntity);
+
+        LOGGER.info("ProductReservedEvent is called for productId:" + productReservedEvent.getProductId() +
+                " and orderId: "+ productReservedEvent.getOrderId());
     }
 }

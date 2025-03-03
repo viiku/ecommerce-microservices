@@ -10,11 +10,11 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>core</module>
         <module>orderservice</module>
         <module>apigateway</module>
         <module>discoveryserver</module>
         <module>productservice</module>
-        <module>core</module>
     </modules>
 
     <dependencyManagement>

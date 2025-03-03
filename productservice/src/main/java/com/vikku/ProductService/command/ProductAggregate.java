@@ -1,6 +1,8 @@
 package com.vikku.ProductService.command;
 
 import com.vikku.ProductService.core.events.ProductCreatedEvent;
+import com.vikku.core.command.ReserveProductCommand;
+import com.vikku.core.command.events.ProductReservedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -48,11 +50,33 @@ public class ProductAggregate {
 //        if(true) throw new Exception("An error took place in CreateProductCommand command handler method");
     }
 
+    @CommandHandler
+    public void handle(ReserveProductCommand reserveProductCommand) {
+
+        if(quantity < reserveProductCommand.getQuantity()) {
+            throw  new IllegalArgumentException("Insufficient number of items in stock");
+        }
+
+        ProductReservedEvent productReservedEvent = new ProductReservedEvent(
+                reserveProductCommand.getProductId(),
+                reserveProductCommand.getQuantity(),
+                reserveProductCommand.getOrderId(),
+                reserveProductCommand.getUserId()
+        );
+
+        AggregateLifecycle.apply(productReservedEvent);
+    }
+
     @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent) {
         this.productId = productCreatedEvent.getProductId();
         this.title = productCreatedEvent.getTitle();
         this.price = productCreatedEvent.getPrice();
         this.quantity = productCreatedEvent.getQuantity();
+    }
+
+    @EventSourcingHandler
+    public void on(ProductReservedEvent productReservedEvent) {
+        this.quantity -= productReservedEvent.getQuantity();
     }
 }
