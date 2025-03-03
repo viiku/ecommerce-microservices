@@ -21,3 +21,4 @@ Task 20:- Added Lookup tables, events handler the command interceptor for set ba
 Task 21:- Centralized Error handler for any exceptions coming
 Task 22:- Error messages in JSON format, intercepting any exception in aggregate command handler
 Task 23:- Custom error handler and exceptions propagate up to stack
+Task 24:- Saga Implementation for order microservice, introduced a new core module, which will have common for microservices
