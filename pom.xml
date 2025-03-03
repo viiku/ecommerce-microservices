@@ -15,6 +15,7 @@
         <module>apigateway</module>
         <module>discoveryserver</module>
         <module>productservice</module>
+        <module>usersservice</module>
     </modules>
 
     <dependencyManagement>

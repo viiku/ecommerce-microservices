@@ -23,3 +23,4 @@ Task 22:- Error messages in JSON format, intercepting any exception in aggregate
 Task 23:- Custom error handler and exceptions propagate up to stack
 Task 24:- Saga Implementation for order microservice, introduced a new core module, which will have common for microservices
 Task 25:- Handle ProductCreatedEvent and OrderCreatedEvent
+Task 26:- Introduced a new microservice called UserService for creating orders, fetching data from different microservice running on different ports, handling events
