@@ -18,3 +18,4 @@ Task 17:- Implement query handler and product entity to retrieve data from datab
 Task 18:- Implement Bean validation for product microservice
 Task 19:- Added command message interceptor for intercepting incoming messages for validation before routing to command handler
 Task 20:- Added Lookup tables, events handler the command interceptor for set based consistency validation
+Task 21:- Centralized Error handler for any exceptions coming

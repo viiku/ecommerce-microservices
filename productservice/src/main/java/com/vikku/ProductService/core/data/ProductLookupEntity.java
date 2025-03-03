@@ -4,22 +4,24 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Table(name = "productlookup")
 @Data
+@Table(name = "productlookup")
 @Entity
 public class ProductLookupEntity implements Serializable {
+
+    private static final long serialVersionUID = 222223838282828L;
 
     @Id
     private String productId;
 
     @Column(unique = true)
     private String title;
+
+    public ProductLookupEntity() {}
 
     public ProductLookupEntity(String productId, String title) {
         this.productId = productId;
