@@ -22,7 +22,7 @@ public class ProductAggregate {
     public ProductAggregate() {}
     
     @CommandHandler
-    public ProductAggregate(CreateProductCommand createProductCommand) {
+    public ProductAggregate(CreateProductCommand createProductCommand) throws Exception {
         //        Basic Validation or command validation
         if(createProductCommand.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Product price can not be less than zero.");
@@ -39,7 +39,13 @@ public class ProductAggregate {
         ProductCreatedEvent productCreatedEvent = new ProductCreatedEvent();
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
+//        When apply method is called, axon framework does not immediately
+//        persist this event to event store instead only stages this event for execution
         AggregateLifecycle.apply(productCreatedEvent);
+
+//        if error is thrown then transaction will be rolled back
+//        and none of the events will be processed
+        if(true) throw new Exception("An error took place in CreateProductCommand command handler method");
     }
 
     @EventSourcingHandler
