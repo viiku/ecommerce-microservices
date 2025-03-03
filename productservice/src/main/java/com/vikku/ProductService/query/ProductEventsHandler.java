@@ -5,6 +5,7 @@ import com.vikku.ProductService.core.data.ProductsRepository;
 import com.vikku.ProductService.core.events.ProductCreatedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,17 @@ public class ProductEventsHandler {
         this.productsRepository = productRepository;
     }
 
+    @ExceptionHandler(resultType = Exception.class)
+    public void handler(Exception exception) throws Exception {
+//        Log error message
+        throw exception;
+    }
+
+    @ExceptionHandler(resultType = IllegalArgumentException.class)
+    public void handler(IllegalArgumentException exception) {
+//        Log error message
+    }
+
     @EventHandler
     public void on(ProductCreatedEvent productCreatedEvent) throws Exception {
 //        Accept what event needs to handle
@@ -31,5 +43,7 @@ public class ProductEventsHandler {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
+
+        if(true) throw new Exception("Force exception in event handler class");
     }
 }

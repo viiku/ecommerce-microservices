@@ -45,7 +45,7 @@ public class ProductAggregate {
 
 //        if error is thrown then transaction will be rolled back
 //        and none of the events will be processed
-        if(true) throw new Exception("An error took place in CreateProductCommand command handler method");
+//        if(true) throw new Exception("An error took place in CreateProductCommand command handler method");
     }
 
     @EventSourcingHandler

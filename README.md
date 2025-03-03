@@ -13,3 +13,8 @@ Axon Server for Event Sourcing
 ### Checking if records already exists in database table
     1. Checking if Product already exists?
     2. Checking if User already exists?
+
+### How to run 
+1. Run Discovery Server
+2. Run API Gateway
+3. Run microservices
